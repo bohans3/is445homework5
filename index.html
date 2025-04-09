@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bigfoot Reports in the United States</title>
+    <title>Bigfoot Sightings Visualizations</title>
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
@@ -16,15 +16,41 @@
         header {
             background-color: #333;
             color: white;
-            text-align: center;
             padding: 1rem;
-        }
-        .section {
-            padding: 2rem;
             text-align: center;
+        }
+        main {
+            padding: 2rem;
+        }
+        section {
+            margin-bottom: 2rem;
+        }
+        h1 {
+            color: #444;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
         }
         .visualization {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .buttons {
             margin-top: 2rem;
+            text-align: center;
+        }
+        button {
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
         }
         footer {
             background-color: #f4f4f4;
@@ -35,28 +61,46 @@
     </style>
 </head>
 <body>
-    <h1>Geographical Distribution of Bigfoot Reports</h1>
-    <p>
-       The data I used comes from a dataset of Bigfoot reports in the United States. My first visualization is a scatter plot that displays the geographical distribution of these reports based on latitude and longitude. Each point on the plot represents an individual report, offering a spatial perspective on where sightings have occurred. I used the X and Y axes, color encoding, and tooltip encoding to enhance the visualization. The points are color-coded based on the state in which each sighting was reported. Additionally, I incorporated interactive features such as pan/zoom and multiple selection tools. For data transformation, I used pandas to load the CSV file and added tooltips to display additional information when viewers hover over each point.
-    </p>
-    <div id="scatter"></div>
+    <header>
+        <h1>Bigfoot Sightings in the United States</h1>
+        <p>Explore geographical and state-level trends in Bigfoot reports through interactive visualizations.</p>
+    </header>
 
-    <h1>State-Level Bigfoot Reports</h1>
-    <p>
-        In my second visualization, I used a bar chart to show the number of Bigfoot reports across different states. I incorporated a dropdown menu as an interactive feature, allowing viewers to select a specific state. The selected state is highlighted in the chart, while a reset option enables users to return to the full view, displaying all states. To maintain consistency, the states are sorted alphabetically. For color encoding, the bars are conditionally styled based on user interaction: the selected state is highlighted in saddlebrown, while unselected states are shown in lightgray.
-    </p>
-    <div id="bar"></div>
+    <main>
+       
+        <section>
+            <h1>Geographical Distribution of Bigfoot Sightings</h1>
+            <p> The data I used comes from a dataset of Bigfoot reports in the United States. My first visualization is a scatter plot that displays the geographical distribution of these reports based on latitude and longitude. Each point on the plot represents an individual report, offering a spatial perspective on where sightings have occurred. I used the X and Y axes, color encoding, and tooltip encoding to enhance the visualization. The points are color-coded based on the state in which each sighting was reported. Additionally, I incorporated interactive features such as pan/zoom and multiple selection tools. For data transformation, I used pandas to load the CSV file and added tooltips to display additional information when viewers hover over each point.</p>
+            <div id="scatter" class="visualization"></div>
+        </section>
 
-    <button onclick="window.location.href='https://github.com/bohans3/is445homework5/blob/main/Workbook.ipynb';">View Notebook</button>
-    <button onclick="window.location.href='https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_data/main/bfro_reports_fall2022.csv';">View Data Source</button>
+     
+        <section>
+            <h1>State-Level Bigfoot Reports</h1>
+            <p>In my second visualization, I used a bar chart to show the number of Bigfoot reports across different states. I incorporated a dropdown menu as an interactive feature, allowing viewers to select a specific state. The selected state is highlighted in the chart, while a reset option enables users to return to the full view, displaying all states. To maintain consistency, the states are sorted alphabetically. For color encoding, the bars are conditionally styled based on user interaction: the selected state is highlighted in saddlebrown, while unselected states are shown in lightgray.</p>
+            <div id="bar" class="visualization"></div>
+        </section>
 
+        
+        <div class="buttons">
+            <button onclick="window.location.href='https://github.com/bohans3/is445homework5/blob/main/Workbook.ipynb';">View Notebook</button>
+            <button onclick="window.location.href='https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_data/main/bfro_reports_fall2022.csv';">View Data Source</button>
+        </div>
+    </main>
+
+  
+    <footer>
+        <p>Data Source: Bigfoot Report Dataset | Visualizations by [Your Name]</p>
+    </footer>
+
+    
     <script>
         const scatterPlotURL = 'https://raw.githubusercontent.com/bohans3/is445homework5/main/scatter_plot.json';
         const barChartURL = 'https://raw.githubusercontent.com/bohans3/is445homework5/main/final_bar_chart.json';
 
         vegaEmbed('#scatter', scatterPlotURL).catch(console.error);
-
         vegaEmbed('#bar', barChartURL).catch(console.error);
     </script>
 </body>
 </html>
+
