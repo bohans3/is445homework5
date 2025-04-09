@@ -1,0 +1,23 @@
+<div id="bigfoot-bar-chart"></div>
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+<script>
+  fetch('BigfootBarChart.json') // Adjust path if hosted elsewhere
+    .then(response => response.json())
+    .then(spec => {
+      vegaEmbed('#bigfoot-bar-chart', spec);
+    })
+    .catch(console.error);
+</script>
+<h2>Bigfoot Sightings Details</h2>
+<ul>
+  {% for sighting in site.data.BigfootBarChart.datasets['data-d8d6dc6ac8a9526b7c10573b896ed541'] %}
+    <li>
+      <strong>State:</strong> {{ sighting.state }}<br>
+      <strong>Observation:</strong> {{ sighting.observed }}<br>
+      <strong>Location:</strong> {{ sighting.location_details }}
+    </li>
+  {% endfor %}
+</ul>
