@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Plots</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+    <h1>Scatter Plot</h1>
+    <div id="scatter"></div>
+
+    <h1>Bar Chart</h1>
+    <div id="bar"></div>
+
+    <script>
+        const scatterPlotURL = 'https://raw.githubusercontent.com/bohans3/is445homework5/main/scatter_plot.json';
+        const barChartURL = 'https://raw.githubusercontent.com/bohans3/is445homework5/main/final_bar_chart.json';
+
+        vegaEmbed('#scatter', scatterPlotURL).catch(console.error);
+
+        vegaEmbed('#bar', barChartURL).catch(console.error);
+    </script>
+</body>
+</html>
